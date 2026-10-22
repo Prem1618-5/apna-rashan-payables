@@ -1,0 +1,49 @@
+{
+  "DocumentMetadata": { "Pages": 1 },
+  "ExpenseDocuments": [
+    {
+      "ExpenseIndex": 1,
+      "SummaryFields": [
+        { "Type": { "Text": "VENDOR_NAME", "Confidence": 97.1 }, "ValueDetection": { "Text": "SHREE GANESH DISTRIBUTORS", "Confidence": 96.4 }, "PageNumber": 1 },
+        { "Type": { "Text": "TAX_PAYER_ID", "Confidence": 88.0 }, "LabelDetection": { "Text": "GSTIN:" }, "ValueDetection": { "Text": "20AABCS 1234F1Z5", "Confidence": 91.2 }, "PageNumber": 1, "GroupProperties": [{ "Types": ["VENDOR"], "Id": "g1" }] },
+        { "Type": { "Text": "OTHER", "Confidence": 70.0 }, "LabelDetection": { "Text": "Buyer GSTIN" }, "ValueDetection": { "Text": "20AAACA9999K1Z9", "Confidence": 89.9 }, "PageNumber": 1, "GroupProperties": [{ "Types": ["RECEIVER"], "Id": "g2" }] },
+        { "Type": { "Text": "INVOICE_RECEIPT_ID", "Confidence": 99.0 }, "LabelDetection": { "Text": "Invoice No." }, "ValueDetection": { "Text": "SGD/26-27/0412", "Confidence": 98.5 }, "PageNumber": 1 },
+        { "Type": { "Text": "INVOICE_RECEIPT_DATE", "Confidence": 99.0 }, "LabelDetection": { "Text": "Date" }, "ValueDetection": { "Text": "20/10/2026", "Confidence": 97.0 }, "PageNumber": 1 },
+        { "Type": { "Text": "SUBTOTAL", "Confidence": 95.0 }, "LabelDetection": { "Text": "Taxable Value" }, "ValueDetection": { "Text": "2,757.18", "Confidence": 95.5 }, "PageNumber": 1 },
+        { "Type": { "Text": "TAX", "Confidence": 93.0 }, "LabelDetection": { "Text": "CGST" }, "ValueDetection": { "Text": "161.47", "Confidence": 94.0 }, "PageNumber": 1 },
+        { "Type": { "Text": "TAX", "Confidence": 93.0 }, "LabelDetection": { "Text": "SGST" }, "ValueDetection": { "Text": "161.47", "Confidence": 94.0 }, "PageNumber": 1 },
+        { "Type": { "Text": "OTHER", "Confidence": 60.0 }, "LabelDetection": { "Text": "Round Off" }, "ValueDetection": { "Text": "-0.12", "Confidence": 90.0 }, "PageNumber": 1 },
+        { "Type": { "Text": "TOTAL", "Confidence": 98.0 }, "LabelDetection": { "Text": "Grand Total" }, "ValueDetection": { "Text": "₹ 3,080.00", "Confidence": 98.8 }, "PageNumber": 1 }
+      ],
+      "LineItemGroups": [
+        {
+          "LineItemGroupIndex": 1,
+          "LineItems": [
+            {
+              "LineItemExpenseFields": [
+                { "Type": { "Text": "ITEM" }, "LabelDetection": { "Text": "Description" }, "ValueDetection": { "Text": "Tata Salt 1kg", "Confidence": 97.0 } },
+                { "Type": { "Text": "OTHER" }, "LabelDetection": { "Text": "HSN" }, "ValueDetection": { "Text": "25010020", "Confidence": 92.0 } },
+                { "Type": { "Text": "QUANTITY" }, "LabelDetection": { "Text": "Qty" }, "ValueDetection": { "Text": "50 PKT", "Confidence": 95.0 } },
+                { "Type": { "Text": "UNIT_PRICE" }, "LabelDetection": { "Text": "Rate" }, "ValueDetection": { "Text": "26.67", "Confidence": 96.0 } },
+                { "Type": { "Text": "OTHER" }, "LabelDetection": { "Text": "GST %" }, "ValueDetection": { "Text": "5%", "Confidence": 93.0 } },
+                { "Type": { "Text": "PRICE" }, "LabelDetection": { "Text": "Amount" }, "ValueDetection": { "Text": "1,333.50", "Confidence": 96.5 } },
+                { "Type": { "Text": "EXPENSE_ROW" }, "ValueDetection": { "Text": "Tata Salt 1kg 25010020 50 PKT 26.67 5% 1,333.50", "Confidence": 95.0, "Geometry": { "BoundingBox": { "Width": 0.88, "Height": 0.03, "Left": 0.06, "Top": 0.38 } } }, "PageNumber": 1 }
+              ]
+            },
+            {
+              "LineItemExpenseFields": [
+                { "Type": { "Text": "ITEM" }, "ValueDetection": { "Text": "Surf Excel Easy Wash 1kg", "Confidence": 94.0 } },
+                { "Type": { "Text": "PRODUCT_CODE" }, "ValueDetection": { "Text": "34022090", "Confidence": 90.0 } },
+                { "Type": { "Text": "QUANTITY" }, "ValueDetection": { "Text": "12", "Confidence": 95.0 } },
+                { "Type": { "Text": "UNIT_PRICE" }, "ValueDetection": { "Text": "118.64", "Confidence": 93.0 } },
+                { "Type": { "Text": "OTHER" }, "LabelDetection": { "Text": "GST %" }, "ValueDetection": { "Text": "18", "Confidence": 91.0 } },
+                { "Type": { "Text": "PRICE" }, "ValueDetection": { "Text": "1,423.68", "Confidence": 95.0 } },
+                { "Type": { "Text": "EXPENSE_ROW" }, "ValueDetection": { "Text": "Surf Excel Easy Wash 1kg ...", "Confidence": 93.0, "Geometry": { "BoundingBox": { "Width": 0.88, "Height": 0.03, "Left": 0.06, "Top": 0.41 } } }, "PageNumber": 1 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
