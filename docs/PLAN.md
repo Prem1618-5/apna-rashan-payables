@@ -59,9 +59,9 @@ tools/eval               extraction accuracy evaluation
 
 ## 5. Hosting
 
-Beta on AWS Mumbai, kept simple: one small server running Docker Compose,
-managed Postgres (RDS) with automatic backups, S3 for images, secrets in AWS
-Secrets Manager. Twelve-factor config so it can move anywhere
+Beta on AWS Mumbai, kept simple: one ECS Fargate container (API + PWA + worker)
+behind CloudFront for HTTPS, RDS Postgres with automatic backups, S3 for
+images, secrets in AWS Secrets Manager (`docs/deploy.md`, `infra/aws`). Twelve-factor config so it can move anywhere
 (`docs/design/platform.md`).
 
 ## 6. Risks

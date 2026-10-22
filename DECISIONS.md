@@ -71,7 +71,9 @@ Each entry: what we chose, why, and what would make us change it.
 
 - **Choice:** each provider declares `trainsOnInput`; real data is blocked from
   such providers unless the owner explicitly allows it (audit-logged).
-- **Also:** one account per provider; no multiple free accounts to dodge limits.
+- **Also:** several keys per provider are supported (`GEMINI_API_KEY_1..N`) and
+  tried in order when one hits a limit. Keys from separate accounts used only to
+  get around free limits can break provider terms; prefer one paid key for real data.
 
 ## D-013 to D-015 · Superseded by D-021
 
@@ -83,9 +85,17 @@ Each entry: what we chose, why, and what would make us change it.
 - **Why:** credits, managed Postgres/S3/secrets, AI services in the same account,
   data in India. Portable to Azure through Terraform and twelve-factor config.
 
-## D-017 · Beta runs on one server with Docker Compose; Terraform later if needed
+## D-017 · Beta compute: one ECS Fargate service behind ALB + CloudFront
 
-- One EC2 server + RDS Postgres + S3. No container cluster until load needs it.
+- **Choice:** one ARM64 Fargate task (0.25 vCPU / 0.5 GB) running API + PWA +
+  worker, default VPC public subnets (no NAT), ALB reachable only from
+  CloudFront, CloudFront gives HTTPS without buying a domain. RDS PostgreSQL
+  db.t4g.micro single-AZ, S3, Secrets Manager. Terraform in `infra/aws`.
+- **Why (AWS startup guidance, pre-revenue stage):** no servers to patch, git-push
+  deploys, rolling deploy with auto-rollback, roughly $45/month. Plain RDS is 4x
+  cheaper than Aurora Serverless at this size.
+- **Add later, with triggers:** Multi-AZ RDS (paying users/SLA), separate worker
+  service (extraction backlog > 5 min), custom domain + WAF (abuse or many stores).
 
 ## D-018 · Twelve-factor as a hard rule
 
