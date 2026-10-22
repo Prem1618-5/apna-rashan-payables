@@ -8,3 +8,4 @@ coverage/
 out/
 *.real.json
 data/
+.claude/worktrees/
