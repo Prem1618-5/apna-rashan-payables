@@ -20,7 +20,7 @@ one approved run.
 - Not published on any app store. One PWA for iPhone and Android, installed from a link.
 - A shared server (API + Postgres + images + OCR) is still required.
 - Payment = HDFC ENet bulk upload file made by the app; the owner uploads and authorises in ENet.
-- Status: `packages/hdfc-bulk-file` built and tested; the rest is planned (see PLAN.md).
+- Status: beta app built — PWA (`apps/web`), API + worker (`services/api`), extraction (`packages/extraction`), AWS infra (`infra/aws`). Not yet deployed.
 
 ## Commands
 
@@ -29,6 +29,11 @@ pnpm install
 pnpm test        # all packages
 pnpm typecheck
 pnpm --filter @arad/hdfc-bulk-file sample   # sample bank file in packages/hdfc-bulk-file/out/
+pnpm db && pnpm seed                         # local Postgres in data/pg + demo data
+pnpm --filter @arad/web build && pnpm --filter @arad/api build
+node services/api/dist/server.js             # app + API on :8080 (reads .env)
+pnpm --filter @arad/web dev                  # UI only, ?mock=1 for the in-browser mock backend
+pnpm --filter @arad/web e2e                  # phone-size end-to-end (mock mode)
 ```
 
 ## Conventions

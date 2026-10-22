@@ -293,7 +293,7 @@ function flow(tag, opts) {
     await page.getByTestId("file-name").waitFor();
     await snap("30-file-ready", { wait: 500 });
     const controlCount = Number(await page.getByTestId("control-count").innerText());
-    const controlTotal = (await page.getByTestId("control-total").innerText()).replace("₹", "");
+    const controlTotal = (await page.getByTestId("control-total").innerText()).replace(/[₹,]/g, "");
     const [download] = await Promise.all([page.waitForEvent("download"), page.getByTestId("download-file").click()]);
     const content = readFileSync(await download.path(), "ascii");
     const rows = content.split("\r\n").filter(Boolean);

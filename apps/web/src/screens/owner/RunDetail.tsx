@@ -1,4 +1,4 @@
-import type { PaymentRunDetail, PaymentRunItem } from "@arad/core";
+import { formatInr, toPaise, type PaymentRunDetail, type PaymentRunItem } from "@arad/core";
 import { CircleAlert, CircleCheck, Download, FileCheck2, FileSpreadsheet, KeyRound, LogIn, MonitorUp, Share2, ShieldCheck, Upload, Wallet, XCircle } from "lucide-react";
 import { useState } from "react";
 import { api, errorMessage } from "../../api/client";
@@ -110,7 +110,7 @@ export default function RunDetail({ id }: { id: string }) {
                   <div className="rounded-[12px] bg-surface-2 p-3">
                     <p className="text-cap text-muted">{t("file.total")}</p>
                     <p className="num text-lead font-semibold leading-8" data-testid="control-total">
-                      ₹{r.file.control.total}
+                      {formatInr(toPaise(r.file.control.total))}
                     </p>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export default function RunDetail({ id }: { id: string }) {
                     { icon: LogIn, key: "file.step1" as const },
                     { icon: Upload, key: "file.step2" as const },
                     { icon: MonitorUp, key: "file.step3" as const },
-                    { icon: ShieldCheck, key: "file.step4" as const, params: { count: r.file.control.count, total: r.file.control.total } },
+                    { icon: ShieldCheck, key: "file.step4" as const, params: { count: r.file.control.count, total: formatInr(toPaise(r.file.control.total), { symbol: false }) } },
                     { icon: KeyRound, key: "file.step5" as const },
                   ].map((s, i) => (
                     <li key={s.key} className="flex items-start gap-3 px-4 py-3">
