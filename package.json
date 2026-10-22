@@ -4,6 +4,11 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "db": "scripts/dev-db.sh",
+    "seed": "pnpm --filter @arad/api seed",
+    "dev:api": "pnpm --filter @arad/api dev",
+    "dev:web": "pnpm --filter @arad/web dev",
+    "build": "pnpm -r build"
   }
 }
