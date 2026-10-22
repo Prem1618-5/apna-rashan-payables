@@ -1,0 +1,399 @@
+{
+  "provider": "gemini:gemini-flash-latest",
+  "model": "gemini-flash-latest",
+  "ms": 36399,
+  "raw": {
+    "header": {
+      "vendorName": "Maa Tara Traders",
+      "sellerGstin": "20KGIPM6821L1Z3",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "MTT/2026-27/0174",
+      "invoiceDate": "2026-10-08",
+      "irn": "91894693ccc8fd56415fc4e800a71aec47ad975bddbe5b96d629dffaf3afe510",
+      "docType": "INV"
+    },
+    "totals": {
+      "taxable": 59513.19,
+      "cgst": 2277.19,
+      "sgst": 2277.19,
+      "otherCharges": 625,
+      "roundOff": 0.43,
+      "grandTotal": 64693
+    },
+    "lines": [
+      {
+        "description": "Arhar Dal (Loose)",
+        "hsn": "07136000",
+        "qty": 46,
+        "unit": "KG",
+        "rate": 136.06,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "taxable": 6258.76,
+        "tax": 0,
+        "amount": 6258.76,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.312,
+          "w": 0.855,
+          "h": 0.019
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Lifebuoy Soap 4x100g",
+        "hsn": "34011190",
+        "qty": 32,
+        "unit": "PKT",
+        "mrp": 152,
+        "rate": 120.3,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 3849.6,
+        "tax": 192.48,
+        "amount": 4042.08,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.331,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Coca-Cola 750ml",
+        "hsn": "22021010",
+        "qty": 33,
+        "unit": "BTL",
+        "mrp": 40,
+        "rate": 25.15,
+        "rateIncludesTax": false,
+        "gstRate": 40,
+        "taxable": 829.95,
+        "tax": 331.98,
+        "amount": 1161.93,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.347,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Maggi Noodles 12-pack",
+        "hsn": "19023010",
+        "qty": 28,
+        "unit": "PKT",
+        "mrp": 180,
+        "rate": 158.09,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 4426.52,
+        "tax": 221.32,
+        "amount": 4647.84,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.364,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Everest Turmeric Powder 200g",
+        "hsn": "09103030",
+        "qty": 37,
+        "unit": "PKT",
+        "mrp": 68,
+        "rate": 54.22,
+        "rateIncludesTax": false,
+        "discountPercent": 2,
+        "gstRate": 5,
+        "taxable": 1966.02,
+        "tax": 98.3,
+        "amount": 2064.32,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.381,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Toned Milk 500ml",
+        "hsn": "04012000",
+        "qty": 184,
+        "unit": "PKT",
+        "mrp": 30,
+        "rate": 27.95,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "taxable": 5142.8,
+        "tax": 0,
+        "amount": 5142.8,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.398,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Fortune Soyabean Oil 1L",
+        "hsn": "15079010",
+        "qty": 36,
+        "unit": "BTL",
+        "mrp": 165,
+        "rate": 128.78,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 4636.08,
+        "tax": 231.8,
+        "amount": 4867.88,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.414,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Parle-G Biscuit 800g",
+        "hsn": "19053100",
+        "qty": 45,
+        "unit": "PKT",
+        "mrp": 90,
+        "rate": 71.85,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 3233.25,
+        "tax": 161.66,
+        "amount": 3394.91,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.431,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Tata Salt 1kg",
+        "hsn": "25010020",
+        "qty": 52,
+        "unit": "PKT",
+        "mrp": 28,
+        "rate": 25.24,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "taxable": 1312.48,
+        "tax": 0,
+        "amount": 1312.48,
+        "box": {
+          "page": 0,
+          "x": 0.083,
+          "y": 0.448,
+          "w": 0.855,
+          "h": 0.017
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Poha Thick 1kg",
+        "hsn": "19041090",
+        "qty": 21,
+        "unit": "PKT",
+        "mrp": 78,
+        "rate": 59.14,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 1241.94,
+        "tax": 62.1,
+        "amount": 1304.04,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.177,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "MDH Garam Masala 100g",
+        "hsn": "09109100",
+        "qty": 40,
+        "unit": "PKT",
+        "mrp": 95,
+        "rate": 83.1,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 3324,
+        "tax": 166.2,
+        "amount": 3490.2,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.194,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Amul Butter 500g",
+        "hsn": "04051000",
+        "qty": 14,
+        "unit": "PCS",
+        "mrp": 285,
+        "rate": 254.03,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 3556.42,
+        "tax": 177.82,
+        "amount": 3734.24,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.211,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Onion (Loose)",
+        "hsn": "07031010",
+        "qty": 165.5,
+        "unit": "KG",
+        "rate": 28,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "taxable": 4634,
+        "tax": 0,
+        "amount": 4634,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.228,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Tata Tea Premium 500g",
+        "hsn": "09024020",
+        "qty": 26,
+        "unit": "PKT",
+        "mrp": 290,
+        "rate": 261.81,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 6807.06,
+        "tax": 340.36,
+        "amount": 7147.42,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.245,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Kurkure Masala Munch 90g",
+        "hsn": "21069099",
+        "qty": 36,
+        "unit": "PKT",
+        "mrp": 20,
+        "rate": 16.51,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 594.36,
+        "tax": 29.72,
+        "amount": 624.08,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.262,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Colgate Strong Teeth 200g",
+        "hsn": "33061020",
+        "qty": 15,
+        "unit": "PCS",
+        "mrp": 125,
+        "rate": 102.73,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 1540.95,
+        "tax": 77.04,
+        "amount": 1617.99,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.279,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Pan Masala Rajnigandha 40g",
+        "hsn": "21069020",
+        "qty": 40,
+        "unit": "PKT",
+        "mrp": 210,
+        "rate": 154.6,
+        "rateIncludesTax": false,
+        "discount": 25,
+        "gstRate": 40,
+        "taxable": 6159,
+        "tax": 2463.6,
+        "amount": 8622.6,
+        "box": {
+          "page": 1,
+          "x": 0.089,
+          "y": 0.296,
+          "w": 0.858,
+          "h": 0.018
+        },
+        "confidence": 0.99
+      }
+    ],
+    "confidence": {
+      "vendorName": 0.99,
+      "sellerGstin": 0.99,
+      "buyerGstin": 0.99,
+      "invoiceNo": 0.99,
+      "invoiceDate": 0.99,
+      "irn": 0.99,
+      "docType": 0.99,
+      "totals.taxable": 0.99,
+      "totals.cgst": 0.99,
+      "totals.sgst": 0.99,
+      "totals.otherCharges": 0.99,
+      "totals.roundOff": 0.99,
+      "totals.grandTotal": 0.99
+    },
+    "amountIncludesTax": true
+  }
+}

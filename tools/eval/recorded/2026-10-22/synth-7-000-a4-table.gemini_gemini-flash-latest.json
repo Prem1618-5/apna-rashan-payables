@@ -1,0 +1,123 @@
+{
+  "provider": "gemini:gemini-flash-latest",
+  "model": "gemini-flash-latest",
+  "ms": 15583,
+  "raw": {
+    "header": {
+      "vendorName": "Ganga Spices & Dry Fruits Pvt. Ltd.",
+      "sellerGstin": "10EWVCG9119W1Z6",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "T-3210",
+      "invoiceDate": "2025-09-15",
+      "irn": "21a793e58f9fb958949309275471457bfdbae7fb599652870a558cf04f366d53",
+      "docType": "INV"
+    },
+    "totals": {
+      "taxable": 11698.22,
+      "igst": 1241.34,
+      "roundOff": 0.44,
+      "grandTotal": 12940
+    },
+    "lines": [
+      {
+        "description": "Good Knight Refill 45ml",
+        "hsn": "38089199",
+        "qty": 30,
+        "unit": "PCS",
+        "mrp": 85,
+        "rate": 70.43,
+        "rateIncludesTax": false,
+        "gstRate": 18,
+        "taxable": 2112.9,
+        "tax": 380.32,
+        "amount": 2493.22,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.313,
+          "w": 0.84,
+          "h": 0.017
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Thums Up 2L",
+        "hsn": "22021010",
+        "qty": 43,
+        "unit": "BTL",
+        "mrp": 95,
+        "rate": 54.6,
+        "rateIncludesTax": false,
+        "gstRate": 28,
+        "taxable": 2347.8,
+        "tax": 657.38,
+        "amount": 3005.18,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.328,
+          "w": 0.84,
+          "h": 0.017
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Masoor Dal (Loose)",
+        "hsn": "07134000",
+        "qty": 34.5,
+        "unit": "KG",
+        "rate": 96.56,
+        "rateIncludesTax": false,
+        "discountPercent": 5,
+        "gstRate": 0,
+        "taxable": 3164.75,
+        "tax": 0,
+        "amount": 3164.75,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.344,
+          "w": 0.84,
+          "h": 0.017
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Fortune Soyabean Oil 1L",
+        "hsn": "15079010",
+        "qty": 30,
+        "unit": "BTL",
+        "mrp": 165,
+        "rate": 139.24,
+        "rateIncludesTax": false,
+        "discountPercent": 2.5,
+        "gstRate": 5,
+        "taxable": 4072.77,
+        "tax": 203.64,
+        "amount": 4276.41,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.358,
+          "w": 0.84,
+          "h": 0.017
+        },
+        "confidence": 0.98
+      }
+    ],
+    "confidence": {
+      "vendorName": 0.98,
+      "sellerGstin": 0.98,
+      "buyerGstin": 0.98,
+      "invoiceNo": 0.98,
+      "invoiceDate": 0.98,
+      "irn": 0.98,
+      "docType": 0.98,
+      "totals.taxable": 0.98,
+      "totals.igst": 0.98,
+      "totals.roundOff": 0.98,
+      "totals.grandTotal": 0.98
+    },
+    "amountIncludesTax": true
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "provider": "gemini:gemini-flash-latest",
+  "model": "gemini-flash-latest",
+  "ms": 20272,
+  "raw": {
+    "header": {
+      "vendorName": "SHIV SHAKTI DAIRY",
+      "sellerGstin": "20HWKPS4512A1ZW",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "SSD/2258",
+      "invoiceDate": "2026-09-24",
+      "docType": "INV"
+    },
+    "totals": {
+      "taxable": 1472.55,
+      "cgst": 144.25,
+      "sgst": 144.25,
+      "roundOff": -0.05,
+      "grandTotal": 1761
+    },
+    "lines": [
+      {
+        "description": "Pan Masala Rajnigandha 40g",
+        "hsn": "2106",
+        "qty": 4,
+        "mrp": 210,
+        "rate": 222.59,
+        "rateIncludesTax": true,
+        "gstRate": 40,
+        "amount": 890.36,
+        "box": {
+          "page": 0,
+          "x": 0.088,
+          "y": 0.267,
+          "w": 0.871,
+          "h": 0.061
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Britannia Good Day 600g",
+        "hsn": "1905",
+        "qty": 4,
+        "mrp": 150,
+        "rate": 127.71,
+        "rateIncludesTax": true,
+        "gstRate": 5,
+        "amount": 510.84,
+        "box": {
+          "page": 0,
+          "x": 0.08,
+          "y": 0.328,
+          "w": 0.878,
+          "h": 0.061
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Everest Turmeric Powder 200g",
+        "hsn": "0910",
+        "qty": 1,
+        "mrp": 68,
+        "rate": 57.79,
+        "rateIncludesTax": true,
+        "gstRate": 5,
+        "amount": 57.79,
+        "box": {
+          "page": 0,
+          "x": 0.74,
+          "y": 0.39,
+          "w": 0.875,
+          "h": 0.06
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Onion (Loose)",
+        "hsn": "0703",
+        "qty": 0.5,
+        "rate": 38.79,
+        "rateIncludesTax": true,
+        "gstRate": 0,
+        "amount": 19.4,
+        "box": {
+          "page": 0,
+          "x": 0.68,
+          "y": 0.448,
+          "w": 0.871,
+          "h": 0.062
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Kurkure Masala Munch 90g",
+        "hsn": "2106",
+        "qty": 3,
+        "mrp": 20,
+        "rate": 17.16,
+        "rateIncludesTax": true,
+        "gstRate": 5,
+        "amount": 51.48,
+        "box": {
+          "page": 0,
+          "x": 0.59,
+          "y": 0.505,
+          "w": 0.871,
+          "h": 0.059
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Toned Milk 500ml",
+        "hsn": "0401",
+        "qty": 5,
+        "mrp": 30,
+        "rate": 26.98,
+        "rateIncludesTax": true,
+        "gstRate": 0,
+        "amount": 134.9,
+        "box": {
+          "page": 0,
+          "x": 0.52,
+          "y": 0.562,
+          "w": 0.873,
+          "h": 0.058
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Agarbatti Cycle 3-in-1",
+        "hsn": "3307",
+        "qty": 2,
+        "mrp": 60,
+        "rate": 48.14,
+        "rateIncludesTax": true,
+        "gstRate": 5,
+        "amount": 96.28,
+        "box": {
+          "page": 0,
+          "x": 0.46,
+          "y": 0.618,
+          "w": 0.871,
+          "h": 0.06
+        },
+        "confidence": 0.98
+      }
+    ],
+    "confidence": {
+      "vendorName": 0.98,
+      "sellerGstin": 0.98,
+      "buyerGstin": 0.98,
+      "invoiceNo": 0.98,
+      "invoiceDate": 0.98,
+      "docType": 0.98,
+      "totals.taxable": 0.98,
+      "totals.cgst": 0.98,
+      "totals.sgst": 0.98,
+      "totals.roundOff": 0.98,
+      "totals.grandTotal": 0.98
+    },
+    "amountIncludesTax": true
+  }
+}

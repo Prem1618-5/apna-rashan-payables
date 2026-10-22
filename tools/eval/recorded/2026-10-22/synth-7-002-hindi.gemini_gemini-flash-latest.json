@@ -1,0 +1,146 @@
+{
+  "provider": "gemini:gemini-flash-latest",
+  "model": "gemini-flash-latest",
+  "ms": 26176,
+  "raw": {
+    "header": {
+      "vendorName": "Jharkhand FMCG Agencies Pvt. Ltd.",
+      "sellerGstin": "20FBECJ7038Z1ZL",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "GST/2026-27/02269",
+      "invoiceDate": "2026-09-19",
+      "docType": "INV"
+    },
+    "totals": {
+      "taxable": 22448.8,
+      "cgst": 128.72,
+      "sgst": 128.72,
+      "roundOff": -0.24,
+      "grandTotal": 22706
+    },
+    "lines": [
+      {
+        "description": "अरहर दाल (खुली)",
+        "hsn": "07136000",
+        "qty": 54.5,
+        "unit": "KG",
+        "rate": 119.91,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "amount": 6535.1,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.236,
+          "w": 0.859,
+          "h": 0.023
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "पोहा मोटा 1 कि.ग्रा.",
+        "hsn": "19041090",
+        "qty": 33,
+        "unit": "PKT",
+        "rate": 60.27,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "amount": 1988.91,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.259,
+          "w": 0.859,
+          "h": 0.023
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Onion (Loose)",
+        "hsn": "07031010",
+        "qty": 164.5,
+        "unit": "KG",
+        "rate": 32.48,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "amount": 5342.96,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.282,
+          "w": 0.859,
+          "h": 0.023
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "टाटा चाय प्रीमियम 500 ग्रा.",
+        "hsn": "09024020",
+        "qty": 13,
+        "unit": "PKT",
+        "rate": 243.07,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "amount": 3159.91,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.305,
+          "w": 0.859,
+          "h": 0.023
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Tata Salt 1kg",
+        "hsn": "25010020",
+        "qty": 70,
+        "unit": "PKT",
+        "rate": 25.33,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "amount": 1773.1,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.328,
+          "w": 0.859,
+          "h": 0.023
+        },
+        "confidence": 0.98
+      },
+      {
+        "description": "Toned Milk 500ml",
+        "hsn": "04012000",
+        "qty": 134,
+        "unit": "PKT",
+        "rate": 27.23,
+        "rateIncludesTax": false,
+        "gstRate": 0,
+        "amount": 3648.82,
+        "box": {
+          "page": 0,
+          "x": 0.067,
+          "y": 0.351,
+          "w": 0.859,
+          "h": 0.023
+        },
+        "confidence": 0.98
+      }
+    ],
+    "confidence": {
+      "vendorName": 0.98,
+      "sellerGstin": 0.98,
+      "buyerGstin": 0.98,
+      "invoiceNo": 0.98,
+      "invoiceDate": 0.98,
+      "docType": 0.98,
+      "totals.taxable": 0.98,
+      "totals.cgst": 0.98,
+      "totals.sgst": 0.98,
+      "totals.roundOff": 0.98,
+      "totals.grandTotal": 0.98
+    },
+    "amountIncludesTax": false
+  }
+}

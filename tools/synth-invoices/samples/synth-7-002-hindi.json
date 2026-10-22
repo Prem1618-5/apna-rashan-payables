@@ -1,0 +1,227 @@
+{
+  "id": "synth-7-002-hindi",
+  "layout": "hindi",
+  "dataClass": "synthetic",
+  "generatedOn": "2026-10-22",
+  "seed": 7,
+  "pages": [
+    "synth-7-002-hindi.p1.jpg"
+  ],
+  "distortions": [
+    "mild",
+    "rotate -0.5°",
+    "shadow 0.18"
+  ],
+  "raw": {
+    "header": {
+      "vendorName": "Jharkhand FMCG Agencies Pvt. Ltd.",
+      "sellerGstin": "20FBECJ7038Z1ZL",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "GST/2026-27/02269",
+      "invoiceDate": "2026-09-19",
+      "docType": "INV"
+    },
+    "lines": [
+      {
+        "description": "अरहर दाल (खुली)",
+        "hsn": "07136000",
+        "qty": 54.5,
+        "unit": "KG",
+        "rate": 119.91,
+        "gstRate": 0,
+        "taxable": 6535.1,
+        "tax": 0,
+        "amount": 6535.1
+      },
+      {
+        "description": "पोहा मोटा 1 कि.ग्रा.",
+        "hsn": "19041090",
+        "qty": 33,
+        "unit": "PKT",
+        "rate": 60.27,
+        "gstRate": 5,
+        "taxable": 1988.91,
+        "tax": 99.44,
+        "amount": 1988.91,
+        "mrp": 78
+      },
+      {
+        "description": "Onion (Loose)",
+        "hsn": "07031010",
+        "qty": 164.5,
+        "unit": "KG",
+        "rate": 32.48,
+        "gstRate": 0,
+        "taxable": 5342.96,
+        "tax": 0,
+        "amount": 5342.96
+      },
+      {
+        "description": "टाटा चाय प्रीमियम 500 ग्रा.",
+        "hsn": "09024020",
+        "qty": 13,
+        "unit": "PKT",
+        "rate": 243.07,
+        "gstRate": 5,
+        "taxable": 3159.91,
+        "tax": 158,
+        "amount": 3159.91,
+        "mrp": 290
+      },
+      {
+        "description": "Tata Salt 1kg",
+        "hsn": "25010020",
+        "qty": 70,
+        "unit": "PKT",
+        "rate": 25.33,
+        "gstRate": 0,
+        "taxable": 1773.1,
+        "tax": 0,
+        "amount": 1773.1,
+        "mrp": 28
+      },
+      {
+        "description": "Toned Milk 500ml",
+        "hsn": "04012000",
+        "qty": 134,
+        "unit": "PKT",
+        "rate": 27.23,
+        "gstRate": 0,
+        "taxable": 3648.82,
+        "tax": 0,
+        "amount": 3648.82,
+        "mrp": 30
+      }
+    ],
+    "amountIncludesTax": false,
+    "totals": {
+      "taxable": 22448.8,
+      "cgst": 128.72,
+      "sgst": 128.72,
+      "igst": 0,
+      "otherCharges": 0,
+      "discount": 0,
+      "roundOff": -0.24,
+      "grandTotal": 22706
+    }
+  },
+  "expected": {
+    "header": {
+      "vendorName": "Jharkhand FMCG Agencies Pvt. Ltd.",
+      "sellerGstin": "20FBECJ7038Z1ZL",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "GST/2026-27/02269",
+      "invoiceDate": "2026-09-19",
+      "docType": "INV"
+    },
+    "totals": {
+      "taxablePaise": 2244880,
+      "cgstPaise": 12872,
+      "sgstPaise": 12872,
+      "igstPaise": 0,
+      "otherChargesPaise": 0,
+      "discountPaise": 0,
+      "roundOffPaise": -24,
+      "grandTotalPaise": 2270600
+    },
+    "lines": [
+      {
+        "idx": 0,
+        "description": "अरहर दाल (खुली)",
+        "hsn": "07136000",
+        "qtyMilli": 54500,
+        "unit": "KG",
+        "ratePaise": 11991,
+        "discountPaise": 0,
+        "gstRateBp": 0,
+        "taxablePaise": 653510,
+        "taxPaise": 0,
+        "totalPaise": 653510,
+        "status": "pending"
+      },
+      {
+        "idx": 1,
+        "description": "पोहा मोटा 1 कि.ग्रा.",
+        "hsn": "19041090",
+        "qtyMilli": 33000,
+        "unit": "PKT",
+        "ratePaise": 6027,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 198891,
+        "taxPaise": 9944,
+        "totalPaise": 208835,
+        "status": "pending",
+        "mrpPaise": 7800
+      },
+      {
+        "idx": 2,
+        "description": "Onion (Loose)",
+        "hsn": "07031010",
+        "qtyMilli": 164500,
+        "unit": "KG",
+        "ratePaise": 3248,
+        "discountPaise": 0,
+        "gstRateBp": 0,
+        "taxablePaise": 534296,
+        "taxPaise": 0,
+        "totalPaise": 534296,
+        "status": "pending"
+      },
+      {
+        "idx": 3,
+        "description": "टाटा चाय प्रीमियम 500 ग्रा.",
+        "hsn": "09024020",
+        "qtyMilli": 13000,
+        "unit": "PKT",
+        "ratePaise": 24307,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 315991,
+        "taxPaise": 15800,
+        "totalPaise": 331791,
+        "status": "pending",
+        "mrpPaise": 29000
+      },
+      {
+        "idx": 4,
+        "description": "Tata Salt 1kg",
+        "hsn": "25010020",
+        "qtyMilli": 70000,
+        "unit": "PKT",
+        "ratePaise": 2533,
+        "discountPaise": 0,
+        "gstRateBp": 0,
+        "taxablePaise": 177310,
+        "taxPaise": 0,
+        "totalPaise": 177310,
+        "status": "pending",
+        "mrpPaise": 2800
+      },
+      {
+        "idx": 5,
+        "description": "Toned Milk 500ml",
+        "hsn": "04012000",
+        "qtyMilli": 134000,
+        "unit": "PKT",
+        "ratePaise": 2723,
+        "discountPaise": 0,
+        "gstRateBp": 0,
+        "taxablePaise": 364882,
+        "taxPaise": 0,
+        "totalPaise": 364882,
+        "status": "pending",
+        "mrpPaise": 3000
+      }
+    ]
+  },
+  "printedRates": [
+    119.91,
+    60.27,
+    32.48,
+    243.07,
+    25.33,
+    27.23
+  ],
+  "notes": []
+}

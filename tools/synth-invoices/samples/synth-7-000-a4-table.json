@@ -1,0 +1,186 @@
+{
+  "id": "synth-7-000-a4-table",
+  "layout": "a4-table",
+  "dataClass": "synthetic",
+  "generatedOn": "2026-10-22",
+  "seed": 7,
+  "pages": [
+    "synth-7-000-a4-table.p1.jpg"
+  ],
+  "distortions": [
+    "harsh",
+    "rotate -2.7°",
+    "skew -0.8°",
+    "blur 0.73px",
+    "contrast 0.73",
+    "shadow 0.38",
+    "paper tint 0.10"
+  ],
+  "raw": {
+    "header": {
+      "vendorName": "Ganga Spices & Dry Fruits Pvt. Ltd.",
+      "sellerGstin": "10EWVCG9119W1Z6",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "T-3210",
+      "invoiceDate": "2025-09-15",
+      "docType": "INV",
+      "irn": "21a793e58f9fb958949309275471457bfdbae7fb599652870a558cf04f366d53"
+    },
+    "lines": [
+      {
+        "description": "Good Knight Refill 45ml",
+        "hsn": "38089199",
+        "qty": 30,
+        "unit": "PCS",
+        "rate": 70.43,
+        "gstRate": 18,
+        "taxable": 2112.9,
+        "tax": 380.32,
+        "amount": 2493.22,
+        "mrp": 85
+      },
+      {
+        "description": "Thums Up 2L",
+        "hsn": "22021010",
+        "qty": 43,
+        "unit": "BTL",
+        "rate": 54.6,
+        "gstRate": 28,
+        "taxable": 2347.8,
+        "tax": 657.38,
+        "amount": 3005.18,
+        "mrp": 95
+      },
+      {
+        "description": "Masoor Dal (Loose)",
+        "hsn": "07134000",
+        "qty": 34.5,
+        "unit": "KG",
+        "rate": 96.56,
+        "gstRate": 0,
+        "taxable": 3164.75,
+        "tax": 0,
+        "amount": 3164.75,
+        "discount": 166.57
+      },
+      {
+        "description": "Fortune Soyabean Oil 1L",
+        "hsn": "15079010",
+        "qty": 30,
+        "unit": "BTL",
+        "rate": 139.24,
+        "gstRate": 5,
+        "taxable": 4072.77,
+        "tax": 203.64,
+        "amount": 4276.41,
+        "mrp": 165,
+        "discount": 104.43
+      }
+    ],
+    "amountIncludesTax": true,
+    "totals": {
+      "taxable": 11698.22,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 1241.34,
+      "otherCharges": 0,
+      "discount": 0,
+      "roundOff": 0.44,
+      "grandTotal": 12940
+    }
+  },
+  "expected": {
+    "header": {
+      "vendorName": "Ganga Spices & Dry Fruits Pvt. Ltd.",
+      "sellerGstin": "10EWVCG9119W1Z6",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "T-3210",
+      "invoiceDate": "2025-09-15",
+      "docType": "INV",
+      "irn": "21a793e58f9fb958949309275471457bfdbae7fb599652870a558cf04f366d53"
+    },
+    "totals": {
+      "taxablePaise": 1169822,
+      "cgstPaise": 0,
+      "sgstPaise": 0,
+      "igstPaise": 124134,
+      "otherChargesPaise": 0,
+      "discountPaise": 0,
+      "roundOffPaise": 44,
+      "grandTotalPaise": 1294000
+    },
+    "lines": [
+      {
+        "idx": 0,
+        "description": "Good Knight Refill 45ml",
+        "hsn": "38089199",
+        "qtyMilli": 30000,
+        "unit": "PCS",
+        "ratePaise": 7043,
+        "discountPaise": 0,
+        "gstRateBp": 1800,
+        "taxablePaise": 211290,
+        "taxPaise": 38032,
+        "totalPaise": 249322,
+        "status": "pending",
+        "mrpPaise": 8500
+      },
+      {
+        "idx": 1,
+        "description": "Thums Up 2L",
+        "hsn": "22021010",
+        "qtyMilli": 43000,
+        "unit": "BTL",
+        "ratePaise": 5460,
+        "discountPaise": 0,
+        "gstRateBp": 2800,
+        "taxablePaise": 234780,
+        "taxPaise": 65738,
+        "totalPaise": 300518,
+        "status": "pending",
+        "mrpPaise": 9500
+      },
+      {
+        "idx": 2,
+        "description": "Masoor Dal (Loose)",
+        "hsn": "07134000",
+        "qtyMilli": 34500,
+        "unit": "KG",
+        "ratePaise": 9656,
+        "discountPaise": 16657,
+        "gstRateBp": 0,
+        "taxablePaise": 316475,
+        "taxPaise": 0,
+        "totalPaise": 316475,
+        "status": "pending"
+      },
+      {
+        "idx": 3,
+        "description": "Fortune Soyabean Oil 1L",
+        "hsn": "15079010",
+        "qtyMilli": 30000,
+        "unit": "BTL",
+        "ratePaise": 13924,
+        "discountPaise": 10443,
+        "gstRateBp": 500,
+        "taxablePaise": 407277,
+        "taxPaise": 20364,
+        "totalPaise": 427641,
+        "status": "pending",
+        "mrpPaise": 16500
+      }
+    ]
+  },
+  "qr": {
+    "raw": "eyJhbGciOiJSUzI1NiIsImtpZCI6IlNZTlRIRVRJQy1URVNULUtFWSIsInR5cCI6IkpXVCIsIng1dCI6ImMzbHVkR2hsZEdsaiJ9.eyJkYXRhIjoie1wiU2VsbGVyR3N0aW5cIjpcIjEwRVdWQ0c5MTE5VzFaNlwiLFwiQnV5ZXJHc3RpblwiOlwiMjBBQVBGQTQ4MjFLMVpMXCIsXCJEb2NOb1wiOlwiVC0zMjEwXCIsXCJEb2NUeXBcIjpcIklOVlwiLFwiRG9jRHRcIjpcIjE1LzA5LzIwMjVcIixcIlRvdEludlZhbFwiOjEyOTQwLFwiSXRlbUNudFwiOjQsXCJNYWluSHNuQ29kZVwiOlwiMTUwNzkwMTBcIixcIklyblwiOlwiMjFhNzkzZTU4ZjlmYjk1ODk0OTMwOTI3NTQ3MTQ1N2JmZGJhZTdmYjU5OTY1Mjg3MGE1NThjZjA0ZjM2NmQ1M1wiLFwiSXJuRHRcIjpcIjIwMjUtMDktMTUgMTk6MDY6MDBcIn0iLCJpc3MiOiJOSUMgU2FuZGJveCAoc3ludGhldGljKSJ9.nd-i-sjbV1m4pf9ak0dBMS0UjqNrsXu3gX-nMqXlu4wNiQN682M41-AAZ4w-6wyRjzdtnGC3a2p8-xAx8GVyK0iz-vX2VDmPSVLABRGwxsXlnxenYRW2XbPa7_XRAcxix_s1fAXm1Ik-YOuACXMJ5WILaLRbar-hXo-HnCpRWCA3JgEJEcRp_oHfK2xyokpMJeRnkiiS32Azk-mIsjP13rocr6xIYJQy1TROVsvwzEMNzZTmMwtkZnvDSsbhdMS0LAT4vYY8F35pXuAWJ6A6IIh_0X9PMRSPj0JLTOGYmizesuYA_Lb99j6xGoH5kyExR4iXqEEb5MRz3Zky7iKKfg"
+  },
+  "printedRates": [
+    70.43,
+    54.6,
+    96.56,
+    139.24
+  ],
+  "notes": [
+    "legacy GST slabs (before 22 Sep 2025)"
+  ]
+}

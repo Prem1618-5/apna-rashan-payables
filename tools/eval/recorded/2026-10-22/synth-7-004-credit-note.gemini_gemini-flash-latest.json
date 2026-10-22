@@ -1,0 +1,95 @@
+{
+  "provider": "gemini:gemini-flash-latest",
+  "model": "gemini-flash-latest",
+  "ms": 15697,
+  "raw": {
+    "header": {
+      "vendorName": "Shree Ganesh Distributors",
+      "sellerGstin": "20POUFS8240E1ZY",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "CN/2026-27/1399",
+      "invoiceDate": "2026-09-12",
+      "docType": "CRN"
+    },
+    "totals": {
+      "taxable": 7314.99,
+      "cgst": 182.87,
+      "sgst": 182.87,
+      "roundOff": 0.27,
+      "grandTotal": 7681
+    },
+    "lines": [
+      {
+        "description": "Cashew W240 500g",
+        "hsn": "08013220",
+        "qty": 6,
+        "unit": "PKT",
+        "rate": 451.55,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 2709.3,
+        "amount": 2709.3,
+        "box": {
+          "page": 0,
+          "x": 0.054,
+          "y": 0.266,
+          "w": 0.902,
+          "h": 0.026
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "Amul Pure Ghee 1L",
+        "hsn": "04059020",
+        "qty": 5,
+        "unit": "TIN",
+        "rate": 583.13,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 2915.65,
+        "amount": 2915.65,
+        "box": {
+          "page": 0,
+          "x": 0.054,
+          "y": 0.296,
+          "w": 0.902,
+          "h": 0.026
+        },
+        "confidence": 0.99
+      },
+      {
+        "description": "MDH Garam Masala 100g",
+        "hsn": "09109100",
+        "qty": 22,
+        "unit": "PKT",
+        "rate": 76.82,
+        "rateIncludesTax": false,
+        "gstRate": 5,
+        "taxable": 1690.04,
+        "amount": 1690.04,
+        "box": {
+          "page": 0,
+          "x": 0.054,
+          "y": 0.324,
+          "w": 0.902,
+          "h": 0.026
+        },
+        "confidence": 0.99
+      }
+    ],
+    "confidence": {
+      "vendorName": 0.99,
+      "sellerGstin": 0.99,
+      "buyerGstin": 0.99,
+      "invoiceNo": 0.99,
+      "invoiceDate": 0.99,
+      "docType": 0.99,
+      "totals.taxable": 0.99,
+      "totals.cgst": 0.99,
+      "totals.sgst": 0.99,
+      "totals.roundOff": 0.99,
+      "totals.grandTotal": 0.99
+    },
+    "amountIncludesTax": false
+  }
+}

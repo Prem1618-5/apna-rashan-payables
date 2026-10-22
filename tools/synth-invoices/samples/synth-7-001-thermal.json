@@ -1,0 +1,249 @@
+{
+  "id": "synth-7-001-thermal",
+  "layout": "thermal",
+  "dataClass": "synthetic",
+  "generatedOn": "2026-10-22",
+  "seed": 7,
+  "pages": [
+    "synth-7-001-thermal.p1.jpg"
+  ],
+  "distortions": [
+    "moderate",
+    "rotate 2.2°",
+    "skew -1.0°",
+    "blur 0.37px",
+    "contrast 0.82",
+    "shadow 0.28",
+    "paper tint 0.15"
+  ],
+  "raw": {
+    "header": {
+      "vendorName": "Shiv Shakti Dairy",
+      "sellerGstin": "20HWKPS4512A1ZW",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "SSD/2258",
+      "invoiceDate": "2026-09-24",
+      "docType": "INV"
+    },
+    "lines": [
+      {
+        "description": "Pan Masala Rajnigandha 40g",
+        "hsn": "2106",
+        "qty": 4,
+        "rate": 158.99,
+        "gstRate": 40,
+        "taxable": 635.97,
+        "tax": 254.39,
+        "amount": 890.36,
+        "mrp": 210
+      },
+      {
+        "description": "Britannia Good Day 600g",
+        "hsn": "1905",
+        "qty": 4,
+        "rate": 121.63,
+        "gstRate": 5,
+        "taxable": 486.51,
+        "tax": 24.33,
+        "amount": 510.84,
+        "mrp": 150
+      },
+      {
+        "description": "Everest Turmeric Powder 200g",
+        "hsn": "0910",
+        "qty": 1,
+        "rate": 55.04,
+        "gstRate": 5,
+        "taxable": 55.04,
+        "tax": 2.75,
+        "amount": 57.79,
+        "mrp": 68
+      },
+      {
+        "description": "Onion (Loose)",
+        "hsn": "0703",
+        "qty": 0.5,
+        "rate": 38.8,
+        "gstRate": 0,
+        "taxable": 19.4,
+        "tax": 0,
+        "amount": 19.4
+      },
+      {
+        "description": "Kurkure Masala Munch 90g",
+        "hsn": "2106",
+        "qty": 3,
+        "rate": 16.34,
+        "gstRate": 5,
+        "taxable": 49.03,
+        "tax": 2.45,
+        "amount": 51.48,
+        "mrp": 20
+      },
+      {
+        "description": "Toned Milk 500ml",
+        "hsn": "0401",
+        "qty": 5,
+        "rate": 26.98,
+        "gstRate": 0,
+        "taxable": 134.9,
+        "tax": 0,
+        "amount": 134.9,
+        "mrp": 30
+      },
+      {
+        "description": "Agarbatti Cycle 3-in-1",
+        "hsn": "3307",
+        "qty": 2,
+        "rate": 45.85,
+        "gstRate": 5,
+        "taxable": 91.7,
+        "tax": 4.58,
+        "amount": 96.28,
+        "mrp": 60
+      }
+    ],
+    "amountIncludesTax": true,
+    "totals": {
+      "taxable": 1472.55,
+      "cgst": 144.25,
+      "sgst": 144.25,
+      "igst": 0,
+      "otherCharges": 0,
+      "discount": 0,
+      "roundOff": -0.05,
+      "grandTotal": 1761
+    }
+  },
+  "expected": {
+    "header": {
+      "vendorName": "Shiv Shakti Dairy",
+      "sellerGstin": "20HWKPS4512A1ZW",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "SSD/2258",
+      "invoiceDate": "2026-09-24",
+      "docType": "INV"
+    },
+    "totals": {
+      "taxablePaise": 147255,
+      "cgstPaise": 14425,
+      "sgstPaise": 14425,
+      "igstPaise": 0,
+      "otherChargesPaise": 0,
+      "discountPaise": 0,
+      "roundOffPaise": -5,
+      "grandTotalPaise": 176100
+    },
+    "lines": [
+      {
+        "idx": 0,
+        "description": "Pan Masala Rajnigandha 40g",
+        "hsn": "2106",
+        "qtyMilli": 4000,
+        "ratePaise": 15899,
+        "discountPaise": 0,
+        "gstRateBp": 4000,
+        "taxablePaise": 63597,
+        "taxPaise": 25439,
+        "totalPaise": 89036,
+        "status": "pending",
+        "mrpPaise": 21000
+      },
+      {
+        "idx": 1,
+        "description": "Britannia Good Day 600g",
+        "hsn": "1905",
+        "qtyMilli": 4000,
+        "ratePaise": 12163,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 48651,
+        "taxPaise": 2433,
+        "totalPaise": 51084,
+        "status": "pending",
+        "mrpPaise": 15000
+      },
+      {
+        "idx": 2,
+        "description": "Everest Turmeric Powder 200g",
+        "hsn": "0910",
+        "qtyMilli": 1000,
+        "ratePaise": 5504,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 5504,
+        "taxPaise": 275,
+        "totalPaise": 5779,
+        "status": "pending",
+        "mrpPaise": 6800
+      },
+      {
+        "idx": 3,
+        "description": "Onion (Loose)",
+        "hsn": "0703",
+        "qtyMilli": 500,
+        "ratePaise": 3880,
+        "discountPaise": 0,
+        "gstRateBp": 0,
+        "taxablePaise": 1940,
+        "taxPaise": 0,
+        "totalPaise": 1940,
+        "status": "pending"
+      },
+      {
+        "idx": 4,
+        "description": "Kurkure Masala Munch 90g",
+        "hsn": "2106",
+        "qtyMilli": 3000,
+        "ratePaise": 1634,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 4903,
+        "taxPaise": 245,
+        "totalPaise": 5148,
+        "status": "pending",
+        "mrpPaise": 2000
+      },
+      {
+        "idx": 5,
+        "description": "Toned Milk 500ml",
+        "hsn": "0401",
+        "qtyMilli": 5000,
+        "ratePaise": 2698,
+        "discountPaise": 0,
+        "gstRateBp": 0,
+        "taxablePaise": 13490,
+        "taxPaise": 0,
+        "totalPaise": 13490,
+        "status": "pending",
+        "mrpPaise": 3000
+      },
+      {
+        "idx": 6,
+        "description": "Agarbatti Cycle 3-in-1",
+        "hsn": "3307",
+        "qtyMilli": 2000,
+        "ratePaise": 4585,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 9170,
+        "taxPaise": 458,
+        "totalPaise": 9628,
+        "status": "pending",
+        "mrpPaise": 6000
+      }
+    ]
+  },
+  "printedRates": [
+    222.59,
+    127.71,
+    57.79,
+    38.79,
+    17.16,
+    26.98,
+    48.14
+  ],
+  "notes": [
+    "printed rates include GST; raw.rate is the before-tax rate"
+  ]
+}
