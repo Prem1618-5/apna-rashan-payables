@@ -49,7 +49,7 @@ export function providersFromEnv(env: Env, opts: CreateExtractorOptions = {}): P
   const keys = readKeys(env, "GEMINI_API_KEY");
   const tier = env.GEMINI_TIER ?? "free";
   const primary = env.GEMINI_MODEL || "gemini-flash-latest";
-  const second = env.GEMINI_SECOND_MODEL || "gemini-pro-latest";
+  const second = env.GEMINI_SECOND_MODEL || "gemini-3.5-flash";
   if (env.TEXTRACT_ENABLED === "true") out.push(new TextractProvider({ enabled: true, region: env.AWS_REGION || "ap-south-1", logger: log }));
   // Each model gets its own pool (quotas are per model), both built from the same keys.
   out.push(new GeminiProvider({ model: primary, pool: new KeyPool(keys, opts.now), tier, fetch: opts.fetch, timeoutMs, logger: log }));

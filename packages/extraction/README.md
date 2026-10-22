@@ -29,7 +29,7 @@ extractor.providers(); // status for Admin → AI providers (key counts only, ne
 
 ## Env
 
-`GEMINI_API_KEY[_1..9]`, `GEMINI_MODEL` (default `gemini-flash-latest`), `GEMINI_SECOND_MODEL` (default `gemini-pro-latest`), `GEMINI_TIER` (`paid` = no training), `GEMINI_TIMEOUT_MS` (60000), `TEXTRACT_ENABLED`, `AWS_REGION`, `AI_ALLOW_TRAINING_PROVIDERS_FOR_REAL_DATA`, `EXTRACTOR` (`auto`/`mock`), `LOG_LEVEL`.
+`GEMINI_API_KEY[_1..9]`, `GEMINI_MODEL` (default `gemini-flash-latest`), `GEMINI_SECOND_MODEL` (default `gemini-3.5-flash`), `GEMINI_TIER` (`paid` = no training), `GEMINI_TIMEOUT_MS` (60000), `TEXTRACT_ENABLED`, `AWS_REGION`, `AI_ALLOW_TRAINING_PROVIDERS_FOR_REAL_DATA`, `EXTRACTOR` (`auto`/`mock`), `LOG_LEVEL`.
 
 On Node 22 behind a proxy, built-in `fetch` needs `NODE_USE_ENV_PROXY=1`.
 

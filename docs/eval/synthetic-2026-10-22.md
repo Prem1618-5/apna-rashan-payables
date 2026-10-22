@@ -11,7 +11,7 @@
 ## Read this first: what this run is and is not
 
 - **Synthetic data only.** 5 of the 6 committed samples in `tools/synth-invoices/samples/` (clean-to-harsh photo distortions, English/Hindi, thermal, credit note, a 2-page invoice with B/F rows). Real vendor bills will be harder (handwriting, folds, faded thermal paper, odd layouts).
-- **One reader only.** `gemini-flash-latest` read every invoice correctly (435/435 fields). The planned second reader could not run on these free-tier keys: `gemini-pro-latest` answered 429 with quota limit 0, and `gemini-2.5-flash` answered 404 ("no longer available to new users"). With one reader the merger caps every confidence at 0.79, so every field is highlighted ("false alarms" 86%) — that is intended: no cross-check, no trust.
+- **One reader only.** `gemini-flash-latest` read every invoice correctly (435/435 fields). The planned second reader could not run on these free-tier keys: `gemini-3.5-flash` answered 429 with quota limit 0, and `gemini-2.5-flash` answered 404 ("no longer available to new users"). With one reader the merger caps every confidence at 0.79, so every field is highlighted ("false alarms" 86%) — that is intended: no cross-check, no trust.
 - `synth-7-003-igst` is left out: `gemini-flash-latest` answered 503 "high demand" on both attempts.
 - About 22 Gemini calls were made in total (including the failures above). Raw outputs are in `tools/eval/recorded/2026-10-22/`; this report was made with `--replay` (no extra calls).
 - Two-reader merger behaviour was measured offline with simulated readers (OCR-like mistakes, see below).

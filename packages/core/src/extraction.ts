@@ -75,6 +75,8 @@ export interface ExtractContext {
   storeGstins: string[];
   /** For logs and idempotency; never sent to providers. */
   invoiceId?: string;
+  /** Parsed GST e-invoice QR, if one was decoded on the phone: strongest evidence for header fields. */
+  qr?: import("./qr.js").EInvoiceQr;
 }
 
 export interface ProviderStatus {

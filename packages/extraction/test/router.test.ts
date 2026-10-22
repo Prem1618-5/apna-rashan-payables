@@ -149,7 +149,7 @@ describe("createExtractor", () => {
   it("builds Gemini readers from env; status shows key counts, never keys", () => {
     const ex = createExtractor({ GEMINI_API_KEY_1: "AIza-secret-1", GEMINI_API_KEY_2: "AIza-secret-2", GEMINI_TIER: "free" }, { logger: silent });
     const st = ex.providers();
-    expect(st.map((s) => s.id)).toEqual(["gemini:gemini-flash-latest", "gemini:gemini-pro-latest"]);
+    expect(st.map((s) => s.id)).toEqual(["gemini:gemini-flash-latest", "gemini:gemini-3.5-flash"]);
     expect(st[0]).toMatchObject({ enabled: true, keys: 2, trainsOnInput: true, allowedForRealData: false, model: "gemini-flash-latest" });
     expect(JSON.stringify(st)).not.toMatch(/secret/);
   });
@@ -188,7 +188,7 @@ describe("createExtractor", () => {
     const fetchMock = (async () => new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text }] }, finishReason: "STOP" }] }), { status: 200 })) as unknown as typeof fetch;
     const ex = createExtractor({ GEMINI_API_KEY_1: "a", GEMINI_API_KEY_2: "b" }, { logger: silent, fetch: fetchMock });
     const out = await ex.extractDetailed([PAGE], synthetic);
-    expect(out.runs.map((r) => [r.provider, r.ok, r.keySlot])).toEqual([["gemini:gemini-flash-latest", true, 1], ["gemini:gemini-pro-latest", true, 1]]);
+    expect(out.runs.map((r) => [r.provider, r.ok, r.keySlot])).toEqual([["gemini:gemini-flash-latest", true, 1], ["gemini:gemini-3.5-flash", true, 1]]);
     expect(out.independent).toBe(false);
     expect(out.lines).toHaveLength(4);
   });
