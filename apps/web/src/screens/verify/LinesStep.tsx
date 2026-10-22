@@ -57,6 +57,11 @@ export function LinesStep({
     return () => clearTimeout(timer);
   }, [current?.id, dwell]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Keep the next card in view after a swipe further down the page.
+  useEffect(() => {
+    if (current && window.scrollY > 0) window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Prefetch the page images the next cards need.
   useEffect(() => {
     prefetch(pending.slice(1, 3).map((l) => pageFor(l)?.url));
@@ -97,7 +102,7 @@ export function LinesStep({
 
   return (
     <>
-      <main className="mx-auto max-w-2xl px-4 pb-40 pt-3">
+      <main className="mx-auto max-w-2xl overflow-x-clip px-4 pb-40 pt-3">
         {current ? (
           <>
             <div className="relative">

@@ -104,6 +104,8 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
     overscroll-behavior-y: none;
+    /* Swiped cards and sheets must never widen the page. */
+    overflow-x: clip;
   }
   button,
   [role="button"] {

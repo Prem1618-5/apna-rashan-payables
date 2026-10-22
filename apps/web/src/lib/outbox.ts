@@ -136,15 +136,15 @@ export function createOutbox(deps: OutboxDeps) {
 
   /** Upload everything that is due. Safe to call often; runs one at a time. */
   function drain(force = false): Promise<void> {
-    if (!draining) {
-      draining = drainOnce(force)
-        .catch(() => {})
-        .finally(async () => {
-          draining = undefined;
-          await refresh().catch(() => {});
-          schedule();
-        });
-    }
+    // A call during a run (e.g. "back online" while the last try was failing) runs again afterwards.
+    if (draining) return draining.then(() => drain(force));
+    draining = drainOnce(force)
+      .catch(() => {})
+      .finally(async () => {
+        draining = undefined;
+        await refresh().catch(() => {});
+        schedule();
+      });
     return draining;
   }
 

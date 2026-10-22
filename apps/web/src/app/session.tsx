@@ -112,6 +112,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(async () => {
     await api.logout().catch(() => {});
+    history.replaceState(null, "", "/"); // next person starts on their home screen
     writeCache(undefined);
     clearCache();
     setMe(null);
