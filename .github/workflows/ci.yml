@@ -1,0 +1,185 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "22"
+  TERRAFORM_VERSION: "1.13.3"
+  # Mock mode everywhere in CI: no AI keys, synthetic data only.
+  EXTRACTOR: mock
+  DATA_CLASS: synthetic
+  STORAGE_DRIVER: fs
+  STORAGE_DIR: ${{ github.workspace }}/.ci-data/uploads
+  SESSION_SECRET: ci-only-session-secret-0123456789abcdef
+  DATA_ENCRYPTION_KEY: Y2ktb25seS0zMi1ieXRlLWtleS1ub3QtcmVhbCEhISE=
+  SEED_OWNER_PIN: "1234"
+
+jobs:
+  # Typecheck, unit tests, API integration tests against a real Postgres 16.
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: arad
+          POSTGRES_PASSWORD: arad
+          POSTGRES_DB: arad
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U arad -d arad"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgres://arad:arad@localhost:5432/arad
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Typecheck
+        run: pnpm -r --if-present run typecheck
+      - name: Unit tests
+        run: pnpm -r --if-present run test
+      - name: API integration tests
+        run: pnpm -r --if-present run test:integration
+
+  # Production build of the PWA + gzip size report against the budget.
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Check web app exists
+        id: web
+        run: |
+          if [ -f apps/web/package.json ]; then echo "present=true" >> "$GITHUB_OUTPUT"
+          else echo "::notice::apps/web not found; skipping web build"; echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Build web
+        if: steps.web.outputs.present == 'true'
+        run: pnpm --filter @arad/web build
+      - name: Bundle size report
+        if: steps.web.outputs.present == 'true'
+        env:
+          BUNDLE_BUDGET_ENFORCE: "false" # set "true" to fail CI when over budget
+        run: node infra/scripts/bundle-size.mjs apps/web/dist
+      - uses: actions/upload-artifact@v4
+        if: steps.web.outputs.present == 'true'
+        with:
+          name: web-dist
+          path: apps/web/dist
+          retention-days: 7
+
+  # Playwright end-to-end tests in mock mode, Chromium.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: arad
+          POSTGRES_PASSWORD: arad
+          POSTGRES_DB: arad
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U arad -d arad"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgres://arad:arad@localhost:5432/arad
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Find Playwright config
+        id: pw
+        run: |
+          cfg="$(git ls-files | grep -E '(^|/)playwright\.config\.(ts|mts|js|mjs)$' | head -n1 || true)"
+          if [ -z "$cfg" ]; then
+            echo "::notice::No playwright.config found; skipping e2e"
+            echo "dir=" >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=$(dirname "$cfg")" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build app
+        if: steps.pw.outputs.dir != ''
+        run: pnpm -r --if-present run build
+      - name: Install Chromium
+        if: steps.pw.outputs.dir != ''
+        run: pnpm --dir "${{ steps.pw.outputs.dir }}" exec playwright install --with-deps chromium
+      - name: Run e2e (chromium)
+        if: steps.pw.outputs.dir != ''
+        run: pnpm --dir "${{ steps.pw.outputs.dir }}" exec playwright test --project=chromium
+      - uses: actions/upload-artifact@v4
+        if: failure() && steps.pw.outputs.dir != ''
+        with:
+          name: playwright-report
+          path: |
+            ${{ steps.pw.outputs.dir }}/playwright-report
+            ${{ steps.pw.outputs.dir }}/test-results
+          retention-days: 7
+
+  # Terraform format + validate (no AWS credentials needed), shell lint.
+  infra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+      - name: terraform fmt
+        run: terraform -chdir=infra/aws fmt -check -recursive -diff
+      - name: terraform init (no backend)
+        run: terraform -chdir=infra/aws init -backend=false -input=false
+      - name: terraform validate
+        run: terraform -chdir=infra/aws validate
+      - name: shellcheck
+        run: shellcheck infra/scripts/*.sh infra/docker/*.sh
+
+  # The image builds (amd64 only here, for speed; deploy builds arm64).
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-buildx-action@v3
+      - name: Check app packages exist
+        id: app
+        run: |
+          if [ -f services/api/package.json ] && [ -f apps/web/package.json ]; then echo "present=true" >> "$GITHUB_OUTPUT"
+          else echo "::notice::services/api or apps/web missing; skipping image build"; echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Build image
+        if: steps.app.outputs.present == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: false
+          provenance: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

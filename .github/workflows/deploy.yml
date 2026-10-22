@@ -1,0 +1,70 @@
+name: Deploy (beta)
+
+# Manual: Actions -> "Deploy (beta)" -> Run workflow.
+# Uses GitHub OIDC to assume the deploy role created by infra/aws/github.tf.
+# No AWS keys are stored in GitHub.
+#
+# One-time setup, in GitHub -> Settings -> Environments -> "beta" -> Variables
+# (values from `terraform output`):
+#   AWS_DEPLOY_ROLE_ARN   github_deploy_role_arn
+#   ECR_REPOSITORY_URL    ecr_repository_url
+#   ECS_CLUSTER           ecs_cluster_name
+#   ECS_SERVICE           ecs_service_name
+#   AWS_REGION            ap-south-1 (optional)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Redeploy an existing image tag (git SHA) instead of building. Leave empty to build this commit."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  id-token: write # for OIDC
+
+concurrency:
+  group: deploy-beta
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    # The deploy role only trusts this environment (see github_deploy_environment).
+    environment: beta
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION || 'ap-south-1' }}
+      ECR_REPOSITORY_URL: ${{ vars.ECR_REPOSITORY_URL }}
+      ECS_CLUSTER: ${{ vars.ECS_CLUSTER }}
+      ECS_SERVICE: ${{ vars.ECS_SERVICE }}
+      IMAGE_TAG_LIVE: ${{ vars.IMAGE_TAG_LIVE || 'latest' }}
+      PLATFORMS: linux/arm64
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Fargate runs ARM64. On this x86 runner the arm64 build runs under QEMU
+      # (slower but simple).
+      - uses: docker/setup-qemu-action@v3
+        if: inputs.tag == ''
+        with:
+          platforms: arm64
+      - uses: docker/setup-buildx-action@v3
+        if: inputs.tag == ''
+
+      - name: Build, push, deploy
+        if: inputs.tag == ''
+        run: infra/scripts/deploy.sh
+
+      - name: Redeploy existing tag
+        if: inputs.tag != ''
+        env:
+          TAG: ${{ inputs.tag }} # via env, never interpolated into the script
+        run: infra/scripts/deploy.sh --tag "$TAG"
