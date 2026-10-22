@@ -10,6 +10,9 @@ one approved run.
 - `docs/PLAN.md` — architecture, milestones, risks
 - `DECISIONS.md` — chosen defaults and assumptions
 - `docs/research/mobile-platform.md` — why a PWA for iOS + Android
+- `docs/design/ai-providers.md` — multi-provider AI router, key handling
+- `docs/design/payments.md` — HDFC file → API, payment safety controls
+- `docs/design/platform.md` — AWS beta, twelve-factor, resilience, security, scale
 
 ## Key facts
 
@@ -24,3 +27,6 @@ one approved run.
 - Every UI string goes through i18n (English + Hindi).
 - Test UI in both Chromium and WebKit at phone sizes.
 - Never log bank account numbers or personal data. Never commit secrets or real invoices.
+- Twelve-factor: all config from env; no local disk state; logs as JSON to stdout.
+- AI keys only on the server (secrets store). Never in frontend code.
+- Every payment call carries an idempotency key; never resend after a timeout without a status check.

@@ -83,11 +83,15 @@ disagree about a total.
 Automated: Playwright with a fake camera, run in Chromium **and WebKit** (WebKit is
 Safari's engine) at phone screen sizes.
 
-## 4. Hosting (no app store, but a server is needed)
+## 4. Hosting, AI providers and payments
 
-- **Default:** small Linux VPS in an Indian region, Docker Compose, domain name,
-  Let's Encrypt HTTPS, nightly encrypted database + image backups to a second location.
-- **Alternative:** a head-office PC running the same Compose stack behind a tunnel.
+- **Cloud (beta):** AWS Mumbai (ECS Fargate, RDS Postgres, S3, Secrets Manager),
+  portable to Azure via Terraform. Twelve-factor, resilience, security and scale:
+  `docs/design/platform.md`.
+- **AI providers:** several providers behind one router with fallback; keys only
+  in the server's secrets store, never in the phone app: `docs/design/ai-providers.md`.
+- **Payments:** HDFC bulk upload file for beta, HDFC API Banking for production,
+  penny-drop API for vendor bank verification: `docs/design/payments.md`.
 - HTTPS is required, not optional: iPhones block camera, offline caching and
   install on insecure sites.
 
@@ -121,6 +125,9 @@ an iPhone and an Android phone.
 | OCR accuracy on real invoices | Wrong data | Layered checks + human verification; never claim 99.99% without eval data |
 | HDFC API access not granted | "One tap" is file upload | Bulk file export is the MVP; API adapter is a documented stub |
 | Payment fraud (bank-detail swap, insider) | Real money lost | Maker-checker, owner passkey, cooling-off, audit log, threat model (M4) |
+| AI key leaked or free quota exhausted | Cost or outage | Keys only in secrets store; router falls back to next provider, then local OCR |
+| Free-tier AI trains on real invoices | Business data exposure | Router blocks `real` data to providers with `trainsOnInput: true` |
+| Cloud costs grow unnoticed | Budget overrun | Per-provider monthly caps, AWS budget alarms, cost per bill on dashboard |
 
 ## 7. Not in scope for now
 
