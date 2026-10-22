@@ -73,49 +73,58 @@ Each entry: what we chose, why, and what would make us change it.
   such providers unless the owner explicitly allows it (audit-logged).
 - **Also:** one account per provider; no multiple free accounts to dodge limits.
 
-## D-013 · Beta payments: HDFC bulk upload file
+## D-013 to D-015 · Superseded by D-021
 
-- **Why:** no integration approval needed; HDFC's own OTP is a second lock.
-- **Revisit when:** HDFC API Banking access is granted (D-014).
-
-## D-014 · Production payments: HDFC API Banking behind `BankAdapter`
-
-- Payout platforms (RazorpayX, Cashfree, others) are a fallback only; HDFC is
-  not confirmed as their partner bank and they add a counterparty and fees.
-
-## D-015 · Penny-drop verification API from day one
-
-- Used to verify vendor bank accounts even while payments go by file.
-- Provider picked at M4 after checking current price and terms.
+- HDFC API Banking, payout platforms and penny-drop verification are out of
+  scope. The app stops at the bank file.
 
 ## D-016 · Beta cloud: AWS Mumbai (ap-south-1), backups to Hyderabad
 
 - **Why:** credits, managed Postgres/S3/secrets, AI services in the same account,
   data in India. Portable to Azure through Terraform and twelve-factor config.
 
-## D-017 · Containers on ECS Fargate; Terraform for infrastructure
+## D-017 · Beta runs on one server with Docker Compose; Terraform later if needed
 
-- **Why:** no servers to patch, per-process-type scaling, same images as local
-  Docker Compose. Terraform keeps the Azure option open.
+- One EC2 server + RDS Postgres + S3. No container cluster until load needs it.
 
 ## D-018 · Twelve-factor as a hard rule
 
 - Config only from env; one image promoted through dev → beta → prod; stateless
   processes; logs to stdout. Details: `docs/design/platform.md`.
 
-## D-019 · Payment timeouts are never blindly retried
+## D-019, D-020 · Withdrawn
 
-- After a timeout, query status by idempotency key before any resend.
+- They covered bank API timeouts and separate payment workers, which no longer exist.
 
-## D-020 · Separate worker pools for extraction and payments (bulkheads)
+## D-021 · The app makes the HDFC file; HDFC makes the payment
 
-- A backlog of extraction jobs can never delay payment processing.
+- **Choice:** the app's payment work ends at generating the ENet bulk upload file
+  and its control totals. The owner uploads and authorises in HDFC ENet.
+- **Why:** simplest correct solution; no bank integration to approve or maintain;
+  HDFC's own OTP is the final lock; our app can never move money.
+- Details: `docs/design/payments.md`, `docs/design/hdfc-bulk-file.md`.
+
+## D-022 · File layout `hdfc-enet-vendor-payment-v1`, kept in one file
+
+- **Choice:** the widely used 28-column ENet vendor-payment layout: bare CSV, no
+  header, CRLF, ASCII, 2 MB limit, file name `{CLIENT}{DD}{MM}.{SEQ}`.
+- **Why:** HDFC does not publish the layout publicly; this matches every public fact found.
+- **Must do before real use:** compare with the official template from ENet or the
+  RM, then do a ₹1 test run. Any difference is fixed in `spec.ts` only.
+
+## D-023 · Scope cut: accuracy first, extras later
+
+- **Kept:** capture, QR, two extractors, maths checks, blind total, swipe
+  verify, vendor master, payables, HDFC file, simple owner dashboard.
+- **Later:** gamification, calibration cards, second reviewer, auto bank
+  reconciliation, Marg/Tally adapters (generic CSV export stays).
 
 ## Open questions for the owner (not blocking)
 
 1. Which phone models and iOS/Android versions do staff and the owner use?
 2. Is AWS fine for the beta, or is there a reason to prefer Azure (existing credits, account)?
 3. Is the ERP really Marg, and which version?
-4. Does the HDFC account have corporate net banking bulk upload? API banking?
-   Please ask the relationship manager for the bulk-upload file format.
+4. Is ENet bulk upload enabled on the HDFC account? Please get the current bulk
+   vendor-payment template + a sample file and the client code from the RM.
+   Do beneficiaries need to be registered in ENet before a bulk upload?
 5. Which AI provider accounts already exist?

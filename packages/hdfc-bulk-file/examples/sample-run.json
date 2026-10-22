@@ -1,0 +1,38 @@
+{
+  "runRef": "R2610230",
+  "options": {
+    "clientCode": "ARAD01",
+    "valueDate": "2026-10-23",
+    "sequence": 1
+  },
+  "vendors": [
+    {
+      "id": "V001",
+      "name": "Shree Ganesh Traders",
+      "accountNumber": "50200012345678",
+      "ifsc": "SBIN0001234",
+      "email": "accounts@ganeshtraders.example"
+    },
+    {
+      "id": "V002",
+      "name": "Jharkhand Dairy Pvt. Ltd.",
+      "accountNumber": "00601110000123",
+      "ifsc": "HDFC0000060",
+      "beneCode": "JHDAIRY01"
+    },
+    {
+      "id": "V003",
+      "name": "Ranchi FMCG Distributors",
+      "accountNumber": "123456789012",
+      "ifsc": "ICIC0000456"
+    }
+  ],
+  "bills": [
+    { "vendorId": "V001", "billNo": "SGT/1021", "storeCode": "S1", "amountPaise": 125000 },
+    { "vendorId": "V001", "billNo": "SGT/1022", "storeCode": "S2", "amountPaise": 349950 },
+    { "vendorId": "V001", "billNo": "SGT/1023", "storeCode": "S3", "amountPaise": 98000 },
+    { "vendorId": "V002", "billNo": "JD-77", "storeCode": "S1", "amountPaise": 1500000 },
+    { "vendorId": "V002", "billNo": "CN-5", "storeCode": "S1", "amountPaise": -50000 },
+    { "vendorId": "V003", "billNo": "RFD9001", "storeCode": "S4", "amountPaise": 21000000 }
+  ]
+}

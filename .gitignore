@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+# generated bank files and real data never go in git
+out/
+*.real.json
