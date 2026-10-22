@@ -1,0 +1,181 @@
+{
+  "id": "synth-7-003-igst",
+  "layout": "igst",
+  "dataClass": "synthetic",
+  "generatedOn": "2026-10-22",
+  "seed": 7,
+  "pages": [
+    "synth-7-003-igst.p1.jpg"
+  ],
+  "distortions": [
+    "none",
+    "clean"
+  ],
+  "raw": {
+    "header": {
+      "vendorName": "Ganga Spices & Dry Fruits Pvt. Ltd.",
+      "sellerGstin": "10EWVCG9119W1Z6",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "GSD/4816",
+      "invoiceDate": "2026-10-10",
+      "docType": "INV",
+      "irn": "10fd528d400ab38277182e47eccf95fba94ef03c56e70bd76a6a2abb6f044397"
+    },
+    "lines": [
+      {
+        "description": "Surf Excel Easy Wash 1kg",
+        "hsn": "34022090",
+        "qty": 23,
+        "unit": "PKT",
+        "rate": 115.99,
+        "gstRate": 18,
+        "taxable": 2667.77,
+        "tax": 480.2,
+        "amount": 3147.97,
+        "mrp": 145
+      },
+      {
+        "description": "Fortune Soyabean Oil 1L",
+        "hsn": "15079010",
+        "qty": 59,
+        "unit": "BTL",
+        "rate": 129.58,
+        "gstRate": 5,
+        "taxable": 7454.09,
+        "tax": 372.7,
+        "amount": 7826.79,
+        "mrp": 165,
+        "discount": 191.13
+      },
+      {
+        "description": "Colgate Strong Teeth 200g",
+        "hsn": "33061020",
+        "qty": 14,
+        "unit": "PCS",
+        "rate": 105.54,
+        "gstRate": 5,
+        "taxable": 1477.56,
+        "tax": 73.88,
+        "amount": 1551.44,
+        "mrp": 125
+      },
+      {
+        "description": "Tata Salt 1kg",
+        "hsn": "25010020",
+        "qty": 63,
+        "unit": "PKT",
+        "rate": 26.02,
+        "gstRate": 0,
+        "taxable": 1622.87,
+        "tax": 0,
+        "amount": 1622.87,
+        "mrp": 28,
+        "discount": 16.39
+      }
+    ],
+    "amountIncludesTax": true,
+    "totals": {
+      "taxable": 13222.29,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 926.78,
+      "otherCharges": 0,
+      "discount": 0,
+      "roundOff": -0.07,
+      "grandTotal": 14149
+    }
+  },
+  "expected": {
+    "header": {
+      "vendorName": "Ganga Spices & Dry Fruits Pvt. Ltd.",
+      "sellerGstin": "10EWVCG9119W1Z6",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "GSD/4816",
+      "invoiceDate": "2026-10-10",
+      "docType": "INV",
+      "irn": "10fd528d400ab38277182e47eccf95fba94ef03c56e70bd76a6a2abb6f044397"
+    },
+    "totals": {
+      "taxablePaise": 1322229,
+      "cgstPaise": 0,
+      "sgstPaise": 0,
+      "igstPaise": 92678,
+      "otherChargesPaise": 0,
+      "discountPaise": 0,
+      "roundOffPaise": -7,
+      "grandTotalPaise": 1414900
+    },
+    "lines": [
+      {
+        "idx": 0,
+        "description": "Surf Excel Easy Wash 1kg",
+        "hsn": "34022090",
+        "qtyMilli": 23000,
+        "unit": "PKT",
+        "ratePaise": 11599,
+        "discountPaise": 0,
+        "gstRateBp": 1800,
+        "taxablePaise": 266777,
+        "taxPaise": 48020,
+        "totalPaise": 314797,
+        "status": "pending",
+        "mrpPaise": 14500
+      },
+      {
+        "idx": 1,
+        "description": "Fortune Soyabean Oil 1L",
+        "hsn": "15079010",
+        "qtyMilli": 59000,
+        "unit": "BTL",
+        "ratePaise": 12958,
+        "discountPaise": 19113,
+        "gstRateBp": 500,
+        "taxablePaise": 745409,
+        "taxPaise": 37270,
+        "totalPaise": 782679,
+        "status": "pending",
+        "mrpPaise": 16500
+      },
+      {
+        "idx": 2,
+        "description": "Colgate Strong Teeth 200g",
+        "hsn": "33061020",
+        "qtyMilli": 14000,
+        "unit": "PCS",
+        "ratePaise": 10554,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 147756,
+        "taxPaise": 7388,
+        "totalPaise": 155144,
+        "status": "pending",
+        "mrpPaise": 12500
+      },
+      {
+        "idx": 3,
+        "description": "Tata Salt 1kg",
+        "hsn": "25010020",
+        "qtyMilli": 63000,
+        "unit": "PKT",
+        "ratePaise": 2602,
+        "discountPaise": 1639,
+        "gstRateBp": 0,
+        "taxablePaise": 162287,
+        "taxPaise": 0,
+        "totalPaise": 162287,
+        "status": "pending",
+        "mrpPaise": 2800
+      }
+    ]
+  },
+  "qr": {
+    "raw": "eyJhbGciOiJSUzI1NiIsImtpZCI6IlNZTlRIRVRJQy1URVNULUtFWSIsInR5cCI6IkpXVCIsIng1dCI6ImMzbHVkR2hsZEdsaiJ9.eyJkYXRhIjoie1wiU2VsbGVyR3N0aW5cIjpcIjEwRVdWQ0c5MTE5VzFaNlwiLFwiQnV5ZXJHc3RpblwiOlwiMjBBQVBGQTQ4MjFLMVpMXCIsXCJEb2NOb1wiOlwiR1NELzQ4MTZcIixcIkRvY1R5cFwiOlwiSU5WXCIsXCJEb2NEdFwiOlwiMTAvMTAvMjAyNlwiLFwiVG90SW52VmFsXCI6MTQxNDksXCJJdGVtQ250XCI6NCxcIk1haW5Ic25Db2RlXCI6XCIxNTA3OTAxMFwiLFwiSXJuXCI6XCIxMGZkNTI4ZDQwMGFiMzgyNzcxODJlNDdlY2NmOTVmYmE5NGVmMDNjNTZlNzBiZDc2YTZhMmFiYjZmMDQ0Mzk3XCIsXCJJcm5EdFwiOlwiMjAyNi0xMC0xMCAxNDoxNTowMFwifSIsImlzcyI6Ik5JQyBTYW5kYm94IChzeW50aGV0aWMpIn0.Vcqfd1GTmWfh6wJ3U8pc0RFHEI4NzqMnGljlZ2SGuqTeHAznL6Be_Kzu2vBlAuKmlmsqANsrQa5FtbWLQo7BSkfAl7YGBCYyes0exQ6GtgESoDdOyNXda2_dKy9df3teIya9OYTxTqPZAdZbuaD_oR8LbhglU9z_yLJwAFPmVNEEqKtjOELVIBivqlNEVzp0Hgvp3Rr9zbakPS9a3xS4xVvZBqhfY_3uW-h4X1uPHbMaOGq9CExwM7OiI84L4ieCy_xfRaV9ilzcDgoYAVnm8lfBXTxKkKJ_HvipkQVfZ9CFibOHYm9OuZcpshJXXw2S90OqANIXBKPd13EGx-kliA"
+  },
+  "printedRates": [
+    115.99,
+    129.58,
+    105.54,
+    26.02
+  ],
+  "notes": []
+}

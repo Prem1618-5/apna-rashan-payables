@@ -19,10 +19,18 @@ export interface GeminiOptions {
   baseUrl?: string;
   /** Cool-down after 429 when the error has no retryDelay. */
   rateLimitCoolMs?: number;
+  /** Cool-down after a 429 that says the quota is 0 (model not available on this tier). */
+  noQuotaCoolMs?: number;
   /** Cool-down after 403 (key disabled / not allowed). */
   forbiddenCoolMs?: number;
   maxOutputTokens?: number;
+  /** Retries on another key after 5xx/timeout (default 1). */
+  maxServerRetries?: number;
+  /** Base backoff before that retry (default 800 ms, with jitter). */
+  backoffMs?: number;
 }
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /** Never let anything that looks like a Google API key into logs or errors. */
 export const scrubKeys = (s: string) => s.replace(/AIza[0-9A-Za-z_-]{20,}/g, "[key]");
@@ -159,7 +167,12 @@ export class GeminiProvider implements Provider {
       throw new ProviderError(this.opts.pool.size ? `all keys are cooling down after rate limits (next in ${wait}s)` : "no API keys configured", this.opts.pool.size ? "rate_limited" : "config");
     }
     let last: ProviderError | undefined;
+    // 5xx / timeouts are model-wide (overload), not key problems: one retry on the next key, then give up.
+    let serverFailures = 0;
+    const maxServerRetries = this.opts.maxServerRetries ?? 1;
     for (const { slot, key } of keys) {
+      if (serverFailures > maxServerRetries) break;
+      if (serverFailures > 0) await sleep((this.opts.backoffMs ?? 800) * (0.5 + Math.random()));
       const t0 = Date.now();
       let r: { status: number; json: unknown };
       try {
@@ -169,19 +182,23 @@ export class GeminiProvider implements Provider {
         if (err.kind === "aborted") throw err;
         this.log.warn("gemini call failed", { provider: this.id, keySlot: slot, kind: err.kind, ms: Date.now() - t0 });
         last = err;
+        if (err.kind === "timeout" || err.kind === "server") serverFailures++;
         continue;
       }
       const msg = scrubKeys(String((r.json as { error?: { message?: string } })?.error?.message ?? "")).slice(0, 200);
       this.log.info("gemini call", { provider: this.id, keySlot: slot, status: r.status, ms: Date.now() - t0 });
       if (r.status === 200) return { json: r.json as GeminiResponse, slot };
       if (r.status === 429) {
-        this.opts.pool.coolDown(slot, retryDelayMs(r.json) ?? this.opts.rateLimitCoolMs ?? 60_000);
-        last = new ProviderError(`rate limited (429) on key slot ${slot}: ${msg}`, "rate_limited", 429);
+        // "limit: 0" = this model has no quota on this key's tier at all: retrying soon only wastes calls.
+        const noQuota = /limit:\s*0\b/.test(JSON.stringify(r.json));
+        this.opts.pool.coolDown(slot, noQuota ? (this.opts.noQuotaCoolMs ?? 60 * 60_000) : (retryDelayMs(r.json) ?? this.opts.rateLimitCoolMs ?? 60_000));
+        last = new ProviderError(noQuota ? `no quota for ${this.opts.model} on key slot ${slot} (limit 0 on this tier)` : `rate limited (429) on key slot ${slot}: ${msg}`, "rate_limited", 429);
       } else if (r.status === 403 || r.status === 401) {
         this.opts.pool.coolDown(slot, this.opts.forbiddenCoolMs ?? 5 * 60_000);
         last = new ProviderError(`forbidden (${r.status}) on key slot ${slot}: ${msg}`, "forbidden", r.status);
       } else if (r.status >= 500) {
         last = new ProviderError(`server error (${r.status}): ${msg}`, "server", r.status);
+        serverFailures++;
       } else if (r.status === 400 && /api key/i.test(msg)) {
         // Google answers 400 "API key not valid" for a bad key: treat like 403 for that key.
         this.opts.pool.coolDown(slot, this.opts.forbiddenCoolMs ?? 5 * 60_000);

@@ -85,8 +85,9 @@ async function runOne(p: Provider, pages: PageImage[], opts: RouterOptions, log:
     return { run, draft, notes: [...(res.notes ?? []).map((n) => `${p.id}: ${n}`), ...draft.notes.map((n) => `${p.id}: ${n}`)] };
   } catch (e) {
     const err = e instanceof ProviderError ? e : new ProviderError(e instanceof Error ? e.message : String(e), "other");
-    // Our own abort is not the provider's fault.
-    if (err.kind !== "aborted" && err.kind !== "config") breaker.failure();
+    // Our own abort is not the provider's fault; an unknown model (404) will not fix itself.
+    if (err.kind === "config" && err.status === 404) breaker.trip();
+    else if (err.kind !== "aborted" && err.kind !== "config") breaker.failure();
     log.warn("reader failed", { provider: p.id, kind: err.kind, status: err.status, ms: Date.now() - t0, invoiceId });
     return { run: { provider: p.id, model: p.info.model, ok: false, ms: Date.now() - t0, error: `${err.kind}: ${err.message}` }, notes: [] };
   }

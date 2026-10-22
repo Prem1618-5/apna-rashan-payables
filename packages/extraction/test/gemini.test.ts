@@ -34,7 +34,7 @@ function setup(responses: ((url: string, init: RequestInit) => Response | Promis
     return r(String(url), init!);
   });
   const pool = new KeyPool(readKeys(env, "GEMINI_API_KEY"), now);
-  const p = new GeminiProvider({ model: "gemini-flash-latest", pool, fetch: fetchMock as unknown as typeof fetch, logger, ...extra });
+  const p = new GeminiProvider({ model: "gemini-flash-latest", pool, fetch: fetchMock as unknown as typeof fetch, logger, backoffMs: 0, ...extra });
   return { p, calls, logs, pool, advance: (ms: number) => (t += ms) };
 }
 
@@ -116,6 +116,16 @@ describe("key pool", () => {
     expect(pool.isCooling(1)).toBe(false);
   });
 
+  it("429 with 'limit: 0' (model has no quota on this tier) cools the key for an hour", async () => {
+    const body = { error: { code: 429, message: "Quota exceeded for metric: generate_content_free_tier_requests, limit: 0, model: gemini-pro", details: [{ retryDelay: "20s" }] } };
+    const { p, pool, advance } = setup([() => err(429, body), () => ok(JSON.stringify(payload()))]);
+    await p.extract([PAGE]);
+    advance(30 * 60_000);
+    expect(pool.isCooling(1)).toBe(true);
+    advance(31 * 60_000);
+    expect(pool.isCooling(1)).toBe(false);
+  });
+
   it("403, 500, 503 and timeouts move on to the next key", async () => {
     const { p, calls } = setup([() => err(403), () => err(500), () => err(503)]);
     await expect(p.extract([PAGE])).rejects.toMatchObject({ kind: "server" });
@@ -126,6 +136,12 @@ describe("key pool", () => {
     const t = setup([hang, () => ok(JSON.stringify(payload()))], KEYS, { timeoutMs: 20 });
     const r = await t.p.extract([PAGE]);
     expect(r.keySlot).toBe(2);
+  });
+
+  it("5xx is model-wide: one retry on another key, then give up (no burning every key)", async () => {
+    const { p, calls } = setup([() => err(503), () => err(503), () => err(503)]);
+    await expect(p.extract([PAGE])).rejects.toMatchObject({ kind: "server", status: 503 });
+    expect(calls).toHaveLength(2);
   });
 
   it("all keys cooling -> rate_limited error without calling the API", async () => {

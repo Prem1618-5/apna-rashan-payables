@@ -134,6 +134,17 @@ describe("circuit breaker", () => {
   });
 });
 
+describe("unknown model", () => {
+  it("a 404 (model not available) opens the circuit at once", async () => {
+    const gone = new MockProvider(DEMO_RAW, { id: "gemini:old", vendor: "google", fail: new ProviderError("request rejected (404): model no longer available", "config", 404) });
+    const breakers = new Map<string, CircuitBreaker>();
+    await extractWithProviders([PAGE], synthetic, [gone], { ...base, breakers });
+    const out = await extractWithProviders([PAGE], synthetic, [gone], { ...base, breakers });
+    expect(gone.calls).toBe(1);
+    expect(out.runs[0]!.error).toMatch(/circuit open/);
+  });
+});
+
 describe("createExtractor", () => {
   it("builds Gemini readers from env; status shows key counts, never keys", () => {
     const ex = createExtractor({ GEMINI_API_KEY_1: "AIza-secret-1", GEMINI_API_KEY_2: "AIza-secret-2", GEMINI_TIER: "free" }, { logger: silent });

@@ -212,12 +212,37 @@ function convertLine(l: RawLine, d: InclDecision): DraftLine {
   return out;
 }
 
+/**
+ * When line tax is not printed we compute it. Vendors round either the whole GST (round(t × 18%))
+ * or CGST and SGST separately (2 × round(t × 9%)); they differ by a paisa now and then. Pick the
+ * method that reproduces the printed CGST + SGST totals, and recompute the computed line tax with it.
+ */
+export function matchTaxRounding(lines: DraftLine[], raw: NormRaw): "full" | "half" {
+  const t = raw.totals;
+  if (!fin(t.cgst) || !fin(t.sgst) || (fin(t.igst) && t.igst !== 0)) return "full";
+  const computed = lines.filter((l) => l.derived.has("taxPaise") && l.derived.has("totalPaise"));
+  if (!computed.length) return "full";
+  const printed = rupeesToPaise(t.cgst) + rupeesToPaise(t.sgst);
+  const full = (l: DraftLine) => Math.round((l.taxablePaise * l.gstRateBp) / 10000);
+  const half = (l: DraftLine) => 2 * Math.round((l.taxablePaise * l.gstRateBp) / 20000);
+  const rest = lines.filter((l) => !computed.includes(l)).reduce((s, l) => s + l.taxPaise, 0);
+  const sumFull = rest + computed.reduce((s, l) => s + full(l), 0);
+  const sumHalf = rest + computed.reduce((s, l) => s + half(l), 0);
+  if (Math.abs(sumHalf - printed) >= Math.abs(sumFull - printed)) return "full";
+  for (const l of computed) {
+    l.taxPaise = half(l);
+    l.totalPaise = l.taxablePaise + l.taxPaise;
+  }
+  return "half";
+}
+
 /** Normalise + convert one reader's output. */
 export function toDraft(provider: string, vendor: string, input: RawExtraction): ReaderDraft {
   const { raw, notes } = normaliseRaw(input);
   const d = decideIncludesTax(raw);
   notes.push(`amounts ${d.amountIncludesTax ? "include" : "exclude"} GST: ${d.reason}${d.rateIncludesTax ? "; printed rates include GST" : ""}`);
   const lines = raw.lines.map((l) => convertLine(l, d));
+  if (matchTaxRounding(lines, raw) === "half") notes.push("line GST computed as CGST + SGST rounded separately (matches the printed tax totals)");
   const totals: Partial<InvoiceTotals> = {};
   const map: [keyof RawExtraction["totals"], keyof InvoiceTotals][] = [
     ["taxable", "taxablePaise"], ["cgst", "cgstPaise"], ["sgst", "sgstPaise"], ["igst", "igstPaise"],

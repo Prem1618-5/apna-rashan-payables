@@ -46,6 +46,12 @@ export class CircuitBreaker {
     }
   }
 
+  /** Open at once (e.g. the model does not exist: retrying is pointless until config changes). */
+  trip() {
+    this.openUntil = this.now() + this.cfg.coolDownMs;
+    this.fails = [];
+  }
+
   retryInMs(): number {
     return Math.max(0, this.openUntil - this.now());
   }

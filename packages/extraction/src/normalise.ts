@@ -178,7 +178,10 @@ function normaliseBox(b: unknown): RawExtractedLine["box"] | undefined {
   // Accept 0..1000 boxes (some models answer in per-mille) by scaling down.
   const scale = Math.max(x, y, w, h) > 1.5 ? 1000 : 1;
   const page = Math.max(0, Math.round(parseNum(o.page) ?? 0));
-  return { page, x: clamp01(x / scale)!, y: clamp01(y / scale)!, w: clamp01(w / scale)!, h: clamp01(h / scale)! };
+  const bx = clamp01(x / scale)!;
+  const by = clamp01(y / scale)!;
+  // Keep the box on the page (models sometimes give x + w > 1).
+  return { page, x: bx, y: by, w: Math.min(clamp01(w / scale)!, 1 - bx), h: Math.min(clamp01(h / scale)!, 1 - by) };
 }
 
 export interface NormaliseResult {

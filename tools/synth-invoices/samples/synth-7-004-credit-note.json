@@ -1,0 +1,146 @@
+{
+  "id": "synth-7-004-credit-note",
+  "layout": "credit-note",
+  "dataClass": "synthetic",
+  "generatedOn": "2026-10-22",
+  "seed": 7,
+  "pages": [
+    "synth-7-004-credit-note.p1.jpg"
+  ],
+  "distortions": [
+    "none",
+    "clean"
+  ],
+  "raw": {
+    "header": {
+      "vendorName": "Shree Ganesh Distributors",
+      "sellerGstin": "20POUFS8240E1ZY",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "CN/2026-27/1399",
+      "invoiceDate": "2026-09-12",
+      "docType": "CRN"
+    },
+    "lines": [
+      {
+        "description": "Cashew W240 500g",
+        "hsn": "08013220",
+        "qty": 6,
+        "unit": "PKT",
+        "rate": 451.55,
+        "gstRate": 5,
+        "taxable": 2709.3,
+        "tax": 135.46,
+        "amount": 2709.3,
+        "mrp": 560
+      },
+      {
+        "description": "Amul Pure Ghee 1L",
+        "hsn": "04059020",
+        "qty": 5,
+        "unit": "TIN",
+        "rate": 583.13,
+        "gstRate": 5,
+        "taxable": 2915.65,
+        "tax": 145.78,
+        "amount": 2915.65,
+        "mrp": 675
+      },
+      {
+        "description": "MDH Garam Masala 100g",
+        "hsn": "09109100",
+        "qty": 22,
+        "unit": "PKT",
+        "rate": 76.82,
+        "gstRate": 5,
+        "taxable": 1690.04,
+        "tax": 84.5,
+        "amount": 1690.04,
+        "mrp": 95
+      }
+    ],
+    "amountIncludesTax": false,
+    "totals": {
+      "taxable": 7314.99,
+      "cgst": 182.87,
+      "sgst": 182.87,
+      "igst": 0,
+      "otherCharges": 0,
+      "discount": 0,
+      "roundOff": 0.27,
+      "grandTotal": 7681
+    }
+  },
+  "expected": {
+    "header": {
+      "vendorName": "Shree Ganesh Distributors",
+      "sellerGstin": "20POUFS8240E1ZY",
+      "buyerGstin": "20AAPFA4821K1ZL",
+      "invoiceNo": "CN/2026-27/1399",
+      "invoiceDate": "2026-09-12",
+      "docType": "CRN"
+    },
+    "totals": {
+      "taxablePaise": 731499,
+      "cgstPaise": 18287,
+      "sgstPaise": 18287,
+      "igstPaise": 0,
+      "otherChargesPaise": 0,
+      "discountPaise": 0,
+      "roundOffPaise": 27,
+      "grandTotalPaise": 768100
+    },
+    "lines": [
+      {
+        "idx": 0,
+        "description": "Cashew W240 500g",
+        "hsn": "08013220",
+        "qtyMilli": 6000,
+        "unit": "PKT",
+        "ratePaise": 45155,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 270930,
+        "taxPaise": 13546,
+        "totalPaise": 284476,
+        "status": "pending",
+        "mrpPaise": 56000
+      },
+      {
+        "idx": 1,
+        "description": "Amul Pure Ghee 1L",
+        "hsn": "04059020",
+        "qtyMilli": 5000,
+        "unit": "TIN",
+        "ratePaise": 58313,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 291565,
+        "taxPaise": 14578,
+        "totalPaise": 306143,
+        "status": "pending",
+        "mrpPaise": 67500
+      },
+      {
+        "idx": 2,
+        "description": "MDH Garam Masala 100g",
+        "hsn": "09109100",
+        "qtyMilli": 22000,
+        "unit": "PKT",
+        "ratePaise": 7682,
+        "discountPaise": 0,
+        "gstRateBp": 500,
+        "taxablePaise": 169004,
+        "taxPaise": 8450,
+        "totalPaise": 177454,
+        "status": "pending",
+        "mrpPaise": 9500
+      }
+    ]
+  },
+  "printedRates": [
+    451.55,
+    583.13,
+    76.82
+  ],
+  "notes": []
+}
